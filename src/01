@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WORLD ZINE — Issue 01: キリスト教</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=M+PLUS+Rounded+1c:wght@400;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral: #FF4757;
+  --blue: #2F86EB;
+  --yellow: #FFD32A;
+  --navy: #1A1A3E;
+  --green: #00C9A7;
+  --white: #FFFEF5;
+  --light: #F0F4FF;
+  --gray: #6B7280;
+}
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: #E8E4FF;
+font-family: ‘Noto Sans JP’, sans-serif;
+overflow-x: hidden;
+}
+
+.page {
+max-width: 800px;
+margin: 32px auto;
+background: var(–white);
+position: relative;
+filter: drop-shadow(6px 6px 0 var(–navy)) drop-shadow(12px 12px 30px rgba(0,0,0,0.3));
+}
+
+/* ===== HALFTONE BG PATTERN ===== */
+.halftone {
+background-image: radial-gradient(circle, var(–navy) 1.5px, transparent 1.5px);
+background-size: 16px 16px;
+opacity: 0.07;
+position: absolute;
+inset: 0;
+pointer-events: none;
+}
+
+/* ===== SERIES SPINE ===== */
+.spine {
+background: var(–navy);
+padding: 0 28px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 44px;
+}
+.spine-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 18px;
+color: var(–yellow);
+letter-spacing: 4px;
+}
+.spine-badges {
+display: flex;
+gap: 10px;
+align-items: center;
+}
+.badge {
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-size: 10px;
+font-weight: 900;
+padding: 3px 10px;
+border-radius: 100px;
+}
+.badge.white { background: white; color: var(–navy); }
+.badge.coral { background: var(–coral); color: white; }
+
+/* ===== COVER ===== */
+.cover {
+background: var(–coral);
+padding: 40px 40px 0;
+position: relative;
+overflow: hidden;
+min-height: 480px;
+display: grid;
+grid-template-columns: 1.2fr 1fr;
+gap: 30px;
+align-items: end;
+}
+
+.cover-deco-circle {
+position: absolute;
+width: 380px;
+height: 380px;
+border-radius: 50%;
+background: rgba(255,255,255,0.08);
+top: -80px;
+right: -80px;
+}
+.cover-deco-circle2 {
+position: absolute;
+width: 200px;
+height: 200px;
+border-radius: 50%;
+background: var(–yellow);
+opacity: 0.15;
+bottom: 40px;
+left: -60px;
+}
+
+.cover-left { padding-bottom: 50px; position: relative; z-index: 2; }
+.cover-right { position: relative; z-index: 2; padding-bottom: 0; }
+
+.issue-label {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: var(–yellow);
+color: var(–navy);
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-weight: 900;
+font-size: 11px;
+padding: 5px 14px;
+border-radius: 100px;
+margin-bottom: 20px;
+letter-spacing: 1px;
+}
+.issue-label .dot {
+width: 8px; height: 8px;
+background: var(–coral);
+border-radius: 50%;
+display: inline-block;
+}
+
+.cover-main-title {
+font-family: ‘Bebas Neue’, sans-serif;
+color: white;
+line-height: 0.9;
+margin-bottom: 16px;
+}
+.cover-main-title .en { font-size: 100px; display: block; }
+.cover-main-title .jp {
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-size: 36px;
+font-weight: 900;
+display: block;
+letter-spacing: 8px;
+}
+
+.cover-tagline {
+background: var(–navy);
+color: white;
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-size: 13px;
+font-weight: 700;
+padding: 10px 16px;
+display: inline-block;
+border-radius: 8px;
+line-height: 1.7;
+}
+
+/* Cover right — Stats Panel */
+.cover-stats {
+background: white;
+border-radius: 16px 16px 0 0;
+padding: 24px 20px;
+}
+.stats-title {
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-size: 11px;
+font-weight: 900;
+color: var(–gray);
+letter-spacing: 3px;
+text-transform: uppercase;
+margin-bottom: 16px;
+}
+.stat-row {
+display: flex;
+align-items: baseline;
+gap: 8px;
+margin-bottom: 14px;
+padding-bottom: 14px;
+border-bottom: 1.5px dashed #E5E7EB;
+}
+.stat-row:last-child { border-bottom: none; margin-bottom: 0; }
+.stat-num {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 36px;
+color: var(–coral);
+line-height: 1;
+}
+.stat-unit {
+font-size: 11px;
+color: var(–gray);
+font-weight: 700;
+}
+.stat-label {
+font-size: 12px;
+color: var(–navy);
+font-weight: 700;
+flex: 1;
+text-align: right;
+}
+
+/* ===== SECTIONS ===== */
+section {
+padding: 48px 44px;
+position: relative;
+overflow: hidden;
+}
+section:nth-child(even) { background: var(–light); }
+
+.sec-tag {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: white;
+background: var(–navy);
+padding: 4px 12px;
+border-radius: 4px;
+margin-bottom: 14px;
+}
+
+h2 {
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-weight: 900;
+font-size: 38px;
+line-height: 1.15;
+color: var(–navy);
+margin-bottom: 24px;
+}
+
+h3 {
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-weight: 900;
+font-size: 18px;
+color: var(–navy);
+margin-bottom: 10px;
+}
+
+p {
+font-size: 14px;
+line-height: 2;
+color: #374151;
+margin-bottom: 14px;
+}
+
+/* ===== COMIC PANEL GRID ===== */
+.panel-grid {
+display: grid;
+gap: 3px;
+margin: 24px 0;
+}
+.panel-grid.col3 { grid-template-columns: 1fr 1fr 1fr; }
+.panel-grid.col2 { grid-template-columns: 1fr 1fr; }
+
+.panel {
+background: white;
+border: 3px solid var(–navy);
+padding: 20px;
+position: relative;
+}
+.panel-num {
+position: absolute;
+top: -3px; left: -3px;
+width: 28px; height: 28px;
+background: var(–navy);
+color: var(–yellow);
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 16px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.panel-icon {
+font-size: 32px;
+margin-bottom: 10px;
+display: block;
+}
+.panel h3 { font-size: 16px; margin-bottom: 6px; }
+.panel p { font-size: 12.5px; margin-bottom: 0; line-height: 1.8; }
+.panel.yellow-bg { background: var(–yellow); }
+.panel.coral-bg { background: var(–coral); color: white; }
+.panel.coral-bg h3, .panel.coral-bg p { color: white; }
+.panel.navy-bg { background: var(–navy); }
+.panel.navy-bg h3 { color: var(–yellow); }
+.panel.navy-bg p { color: rgba(255,255,255,0.8); }
+
+/* ===== PULL QUOTE ===== */
+.pq {
+background: var(–yellow);
+border: 3px solid var(–navy);
+padding: 24px 28px;
+margin: 28px 0;
+position: relative;
+border-radius: 0 20px 20px 20px;
+}
+.pq::before {
+content: ‘’;
+position: absolute;
+top: -26px; left: -3px;
+width: 0; height: 0;
+border-left: 26px solid transparent;
+border-right: 0;
+border-bottom: 26px solid var(–navy);
+}
+.pq::after {
+content: ‘’;
+position: absolute;
+top: -20px; left: 0;
+width: 0; height: 0;
+border-left: 22px solid transparent;
+border-right: 0;
+border-bottom: 22px solid var(–yellow);
+}
+.pq p {
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-weight: 700;
+font-size: 16px;
+line-height: 1.8;
+color: var(–navy);
+margin: 0;
+}
+.pq cite {
+display: block;
+font-size: 11px;
+color: #6B7280;
+margin-top: 8px;
+font-style: normal;
+font-weight: 700;
+}
+
+/* ===== STICKER ===== */
+.sticker {
+display: inline-block;
+background: var(–green);
+color: white;
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-weight: 900;
+font-size: 11px;
+padding: 6px 14px;
+border-radius: 100px;
+border: 2.5px solid var(–navy);
+transform: rotate(-2deg);
+}
+.sticker.blue-s { background: var(–blue); }
+.sticker.coral-s { background: var(–coral); }
+.sticker.yellow-s { background: var(–yellow); color: var(–navy); }
+
+/* ===== TIMELINE POP ===== */
+.pop-timeline { margin: 28px 0; }
+.pop-tl-item {
+display: grid;
+grid-template-columns: 90px 28px 1fr;
+gap: 0 10px;
+align-items: start;
+margin-bottom: 20px;
+}
+.pop-tl-year {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 22px;
+color: var(–coral);
+text-align: right;
+line-height: 1.2;
+}
+.pop-tl-line {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.pop-tl-dot {
+width: 18px; height: 18px;
+background: var(–navy);
+border-radius: 50%;
+border: 3px solid white;
+box-shadow: 0 0 0 2px var(–navy);
+flex-shrink: 0;
+margin-top: 4px;
+}
+.pop-tl-vline {
+width: 3px;
+background: repeating-linear-gradient(to bottom, var(–navy) 0, var(–navy) 6px, transparent 6px, transparent 12px);
+flex: 1;
+min-height: 30px;
+}
+.pop-tl-content h4 {
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-weight: 900;
+font-size: 14px;
+color: var(–navy);
+margin-bottom: 4px;
+line-height: 1.4;
+}
+.pop-tl-content p { font-size: 12.5px; color: var(–gray); margin: 0; line-height: 1.7; }
+
+/* ===== DENOMINATION CARDS ===== */
+.denom-grid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 16px;
+margin: 24px 0;
+}
+.denom-card {
+border: 3px solid var(–navy);
+border-radius: 12px;
+overflow: hidden;
+}
+.denom-header {
+padding: 14px;
+text-align: center;
+}
+.denom-header .icon { font-size: 28px; display: block; margin-bottom: 6px; }
+.denom-header h3 {
+font-size: 16px;
+margin-bottom: 0;
+line-height: 1.2;
+}
+.denom-body {
+padding: 14px;
+background: var(–white);
+}
+.denom-body p { font-size: 12px; line-height: 1.8; margin-bottom: 8px; }
+.denom-tag {
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-size: 10px;
+font-weight: 900;
+padding: 2px 8px;
+border-radius: 4px;
+background: var(–navy);
+color: white;
+display: inline-block;
+margin-top: 4px;
+}
+
+/* ===== NEWS CONNECTION CARDS ===== */
+.news-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin: 24px 0;
+}
+.news-card {
+background: white;
+border: 2.5px solid var(–navy);
+border-radius: 12px;
+padding: 18px;
+position: relative;
+overflow: hidden;
+}
+.news-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 5px;
+}
+.news-card.card-coral::before { background: var(–coral); }
+.news-card.card-blue::before { background: var(–blue); }
+.news-card.card-green::before { background: var(–green); }
+.news-card.card-yellow::before { background: var(–yellow); }
+.news-icon { font-size: 24px; margin-bottom: 8px; display: block; }
+.news-card h3 { font-size: 15px; margin-bottom: 6px; }
+.news-card p { font-size: 12.5px; margin-bottom: 0; line-height: 1.8; }
+.news-link {
+display: inline-block;
+margin-top: 10px;
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-size: 10px;
+font-weight: 900;
+color: var(–coral);
+border-bottom: 2px solid var(–coral);
+}
+
+/* ===== CRITICAL BOX ===== */
+.crit-box {
+background: #FFF0F0;
+border: 3px solid var(–coral);
+border-radius: 12px;
+padding: 24px;
+margin: 24px 0;
+position: relative;
+}
+.crit-box-label {
+position: absolute;
+top: -14px;
+left: 16px;
+background: var(–coral);
+color: white;
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-weight: 900;
+font-size: 11px;
+padding: 4px 14px;
+border-radius: 100px;
+}
+.crit-item {
+display: flex;
+gap: 12px;
+margin-bottom: 14px;
+align-items: flex-start;
+}
+.crit-item:last-child { margin-bottom: 0; }
+.crit-emoji { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.crit-item p { font-size: 13px; line-height: 1.8; margin: 0; }
+.crit-item strong { color: var(–coral); }
+
+/* ===== CONCEPT MAP ===== */
+.concept-map {
+display: flex;
+flex-direction: column;
+gap: 3px;
+margin: 24px 0;
+}
+.cm-row { display: flex; gap: 3px; }
+.cm-cell {
+flex: 1;
+border: 3px solid var(–navy);
+padding: 14px 16px;
+background: white;
+}
+.cm-cell.wide { flex: 2; }
+.cm-cell.colored { background: var(–navy); }
+.cm-cell.colored .cm-label, .cm-cell.colored .cm-desc { color: white; }
+.cm-label {
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-weight: 900;
+font-size: 13px;
+color: var(–coral);
+margin-bottom: 4px;
+}
+.cm-desc { font-size: 12px; line-height: 1.7; color: #374151; }
+
+/* ===== BACK COVER ===== */
+.back-cover {
+background: var(–navy);
+padding: 50px 44px;
+position: relative;
+overflow: hidden;
+}
+.back-deco {
+position: absolute;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 180px;
+color: rgba(255,255,255,0.03);
+top: 10px;
+right: -10px;
+pointer-events: none;
+}
+.back-cover h2 {
+color: var(–yellow);
+font-size: 32px;
+margin-bottom: 16px;
+}
+.back-cover > p { color: rgba(255,255,255,0.7); font-size: 13.5px; }
+
+.next-series {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 10px;
+margin: 28px 0;
+}
+.ns-card {
+border: 2px solid rgba(255,255,255,0.2);
+border-radius: 10px;
+padding: 14px 10px;
+text-align: center;
+transition: all 0.2s;
+cursor: default;
+}
+.ns-card.active {
+background: var(–coral);
+border-color: var(–coral);
+}
+.ns-card .ns-num {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 13px;
+color: var(–yellow);
+display: block;
+margin-bottom: 4px;
+}
+.ns-card.active .ns-num { color: white; }
+.ns-card .ns-name {
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+font-weight: 700;
+font-size: 12px;
+color: rgba(255,255,255,0.9);
+display: block;
+}
+.ns-card .ns-emoji { font-size: 22px; display: block; margin-bottom: 6px; }
+
+.back-final {
+border-top: 2px solid rgba(255,255,255,0.15);
+padding-top: 24px;
+margin-top: 24px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.back-final .tagline {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 26px;
+color: white;
+letter-spacing: 3px;
+line-height: 1.3;
+}
+.back-final .tagline span { color: var(–yellow); }
+.colophon {
+font-size: 10px;
+color: rgba(255,255,255,0.3);
+font-family: ‘M PLUS Rounded 1c’, sans-serif;
+text-align: right;
+line-height: 2;
+}
+
+/* ===== DIVIDER ===== */
+.fun-divider {
+display: flex;
+align-items: center;
+gap: 14px;
+margin: 28px 0;
+}
+.fun-divider::before, .fun-divider::after {
+content: ‘’;
+flex: 1;
+height: 3px;
+background: repeating-linear-gradient(to right, var(–navy) 0, var(–navy) 8px, transparent 8px, transparent 14px);
+}
+.fun-divider .icon { font-size: 20px; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes popIn {
+0% { opacity: 0; transform: scale(0.9) translateY(16px); }
+100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.cover { animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+section:nth-child(2) { animation: popIn 0.5s 0.05s both; }
+section:nth-child(3) { animation: popIn 0.5s 0.1s both; }
+section:nth-child(4) { animation: popIn 0.5s 0.15s both; }
+section:nth-child(5) { animation: popIn 0.5s 0.2s both; }
+section:nth-child(6) { animation: popIn 0.5s 0.25s both; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 680px) {
+.cover { grid-template-columns: 1fr; }
+.cover-main-title .en { font-size: 72px; }
+.panel-grid.col3, .denom-grid, .next-series { grid-template-columns: 1fr 1fr; }
+.news-grid { grid-template-columns: 1fr; }
+section { padding: 36px 20px; }
+h2 { font-size: 28px; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="page">
+
+<!-- SPINE -->
+
+<div class="spine">
+  <span class="spine-title">WORLD RELIGIONS & PHILOSOPHY ZINE</span>
+  <div class="spine-badges">
+    <span class="badge white">Issue 01/06</span>
+    <span class="badge coral">FREE</span>
+  </div>
+</div>
+
+<!-- ===== COVER ===== -->
+
+<div class="cover">
+  <div class="halftone"></div>
+  <div class="cover-deco-circle"></div>
+  <div class="cover-deco-circle2"></div>
+
+  <div class="cover-left">
+    <div class="issue-label">
+      <span class="dot"></span>
+      ISSUE 01 — WORLD RELIGIONS & PHILOSOPHY
+    </div>
+
+```
+<div class="cover-main-title">
+  <span class="en">CHRIST-<br>IANITY</span>
+  <span class="jp">キリスト教</span>
+</div>
+
+<div class="cover-tagline">
+  世界20億人の信仰。<br>
+  西洋文明・国際政治・現代ニュースを<br>
+  読み解くための必須OS 📖
+</div>
+```
+
+  </div>
+
+  <div class="cover-right">
+    <div class="cover-stats">
+      <div class="stats-title">BASIC DATA</div>
+      <div class="stat-row">
+        <span class="stat-num">24</span>
+        <span class="stat-unit">億人</span>
+        <span class="stat-label">世界信者数（世界人口の31%）</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">2.1</span>
+        <span class="stat-unit">K年</span>
+        <span class="stat-label">歴史の長さ（紀元1世紀〜）</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">45</span>
+        <span class="stat-unit">億部</span>
+        <span class="stat-label">聖書の総発行部数（史上最多）</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-num">3</span>
+        <span class="stat-unit">大宗派</span>
+        <span class="stat-label">カトリック・プロテスタント・正教会</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 01: WHAT IS IT ===== -->
+
+<section>
+  <div class="sec-tag">01 — WHAT IS CHRISTIANITY?</div>
+  <h2>3行でわかる<br>キリスト教</h2>
+
+  <div class="panel-grid col3">
+    <div class="panel navy-bg">
+      <div class="panel-num">1</div>
+      <span class="panel-icon">✝️</span>
+      <h3>神は唯一</h3>
+      <p>唯一の全能神が宇宙と人間を創造した。ユダヤ教・イスラム教と同じ一神教の系譜に属する。</p>
+    </div>
+    <div class="panel coral-bg">
+      <div class="panel-num">2</div>
+      <span class="panel-icon">🌟</span>
+      <h3>イエスは救世主</h3>
+      <p>イエス・キリストは神の子であり救世主（メシア）。十字架の死と復活で人類の罪を救った——これが核心。</p>
+    </div>
+    <div class="panel yellow-bg">
+      <div class="panel-num">3</div>
+      <span class="panel-icon">📖</span>
+      <h3>聖書が聖典</h3>
+      <p>旧約聖書（ユダヤ教継承）＋新約聖書（イエスの生涯・教え）の2部構成。神の言葉とされる。</p>
+    </div>
+  </div>
+
+  <p>キリスト教がなぜ「現代ニュースを読むためのOS」なのか。それは<strong>ヨーロッパの法律・倫理・芸術・政治がほぼすべてキリスト教的世界観の上に構築されている</strong>からだ。「人権」「民主主義」「罪と罰」——これらの概念の底流にある価値観を知らずして、西洋発のニュースを本当に理解することはできない。</p>
+
+  <div class="fun-divider"><span class="icon">✨</span></div>
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap;">
+    <span class="sticker">🌍 世界最大の宗教</span>
+    <span class="sticker blue-s">✝ 一神教の完成形</span>
+    <span class="sticker coral-s">📰 ニュース解読の鍵</span>
+    <span class="sticker yellow-s">🏛 西洋文明の基盤</span>
+  </div>
+</section>
+
+<!-- ===== SECTION 02: HISTORY ===== -->
+
+<section>
+  <div class="sec-tag">02 — BRIEF HISTORY</div>
+  <h2>ざっくり歴史！<br>誕生から今日まで</h2>
+
+  <div class="pop-timeline">
+    <div class="pop-tl-item">
+      <div class="pop-tl-year">~BC</div>
+      <div class="pop-tl-line"><div class="pop-tl-dot"></div><div class="pop-tl-vline"></div></div>
+      <div class="pop-tl-content">
+        <h4>前史：ユダヤ教の誕生</h4>
+        <p>キリスト教の"母体"。「神ヤハウェとイスラエル民族の契約」という一神教の基盤が形成される。旧約聖書はここで書かれた。</p>
+      </div>
+    </div>
+    <div class="pop-tl-item">
+      <div class="pop-tl-year">AD 30</div>
+      <div class="pop-tl-line"><div class="pop-tl-dot" style="background:var(--coral)"></div><div class="pop-tl-vline"></div></div>
+      <div class="pop-tl-content">
+        <h4>⚡ イエス、十字架で処刑→復活</h4>
+        <p>ローマ支配下のエルサレムで大工の息子として生まれたイエスは30歳頃から活動。「神の国が来た」と説き、反体制的とみなされ処刑。弟子たちが「復活した！」と証言したことで運動が爆発的に広まる。</p>
+      </div>
+    </div>
+    <div class="pop-tl-item">
+      <div class="pop-tl-year">AD 313</div>
+      <div class="pop-tl-line"><div class="pop-tl-dot"></div><div class="pop-tl-vline"></div></div>
+      <div class="pop-tl-content">
+        <h4>🏛 ローマ帝国が公認宗教に</h4>
+        <p>コンスタンティヌス帝がミラノ勅令で認可。迫害された少数派宗教がローマ帝国の国教へ。これが西洋キリスト教世界のスタート。</p>
+      </div>
+    </div>
+    <div class="pop-tl-item">
+      <div class="pop-tl-year">1054</div>
+      <div class="pop-tl-line"><div class="pop-tl-dot" style="background:var(--blue)"></div><div class="pop-tl-vline"></div></div>
+      <div class="pop-tl-content">
+        <h4>✂️ 東西大分裂（シスマ）</h4>
+        <p>ローマ（カトリック）とコンスタンティノープル（正教会）が正式分裂。現在のロシア正教会・ウクライナ正教会の対立はここが起源。</p>
+      </div>
+    </div>
+    <div class="pop-tl-item">
+      <div class="pop-tl-year">1517</div>
+      <div class="pop-tl-line"><div class="pop-tl-dot" style="background:var(--yellow)"></div><div class="pop-tl-vline"></div></div>
+      <div class="pop-tl-content">
+        <h4>🔨 宗教改革（プロテスタント誕生）</h4>
+        <p>マルティン・ルターが免罪符販売を批判。「聖書のみ・信仰のみ」を掲げカトリックから分離。ヨーロッパ百年の宗教戦争を引き起こす。</p>
+      </div>
+    </div>
+    <div class="pop-tl-item">
+      <div class="pop-tl-year">現代</div>
+      <div class="pop-tl-line"><div class="pop-tl-dot" style="background:var(--green)"></div></div>
+      <div class="pop-tl-content">
+        <h4>🌐 グローバル化・世俗化・対立</h4>
+        <p>欧米では信者減少・世俗化が進む一方、アフリカ・南米では爆発的増加。宗教右派の政治的影響（米国）、移民問題、ロシア正教会の戦争正当化が現代ニュースの焦点に。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 03: DENOMINATIONS ===== -->
+
+<section>
+  <div class="sec-tag">03 — THREE BIG BRANCHES</div>
+  <h2>3大宗派、<br>なにが違うの？</h2>
+  <p>「キリスト教」といっても中身は一枚岩じゃない。歴史的分裂で生まれた3つの主要宗派を比較しよう。</p>
+
+  <div class="denom-grid">
+    <div class="denom-card">
+      <div class="denom-header" style="background:var(--yellow)">
+        <span class="icon">🏛</span>
+        <h3 style="color:var(--navy)">カトリック</h3>
+      </div>
+      <div class="denom-body">
+        <p><strong>総本山：</strong>ローマ（バチカン）<br><strong>信者数：</strong>約13億人</p>
+        <p>ローマ教皇を頂点とする中央集権的組織。伝統・儀式・聖人崇敬を重視。ヨーロッパ・南米・フィリピンが中心。</p>
+        <span class="denom-tag">現代注目点：教皇フランシスコの改革路線 vs 保守派の対立</span>
+      </div>
+    </div>
+    <div class="denom-card">
+      <div class="denom-header" style="background:var(--coral)">
+        <span class="icon">📖</span>
+        <h3 style="color:white">プロテスタント</h3>
+      </div>
+      <div class="denom-body">
+        <p><strong>中心地：</strong>北米・北欧・韓国<br><strong>信者数：</strong>約9億人（多数の宗派）</p>
+        <p>教皇なし・聖書中心・個人の信仰重視。バプテスト・メソジスト・長老派など多彩な宗派が生まれた。</p>
+        <span class="denom-tag">現代注目点：米国の宗教右派（Evangelical）と政治</span>
+      </div>
+    </div>
+    <div class="denom-card">
+      <div class="denom-header" style="background:var(--blue)">
+        <span class="icon">☦️</span>
+        <h3 style="color:white">正教会</h3>
+      </div>
+      <div class="denom-body">
+        <p><strong>中心地：</strong>東欧・ロシア・ギリシャ<br><strong>信者数：</strong>約2.6億人</p>
+        <p>1054年の東西分裂で誕生。各国ごとに独立した正教会がある（ロシア正教・ウクライナ正教・ギリシャ正教など）。</p>
+        <span class="denom-tag">現代注目点：ロシア正教会によるウクライナ戦争の正当化</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pq">
+    <p>💡 宗派対立を「宗教の話」だと思ったら間違い。カトリック vs プロテスタントはアイルランド紛争の根底にあり、正教会の分裂はウクライナ戦争の背景に直結している。</p>
+  </div>
+</section>
+
+<!-- ===== SECTION 04: KEY CONCEPTS ===== -->
+
+<section>
+  <div class="sec-tag">04 — KEY CONCEPTS</div>
+  <h2>コア概念を<br>7つ押さえる</h2>
+
+  <div class="concept-map">
+    <div class="cm-row">
+      <div class="cm-cell colored wide">
+        <div class="cm-label">三位一体（Trinity）</div>
+        <div class="cm-desc" style="color:rgba(255,255,255,0.8)">父なる神・子なるイエス・聖霊という「3つの位格が1つの神」というキリスト教独自の概念。ユダヤ教・イスラム教と決定的に異なる点。</div>
+      </div>
+      <div class="cm-cell">
+        <div class="cm-label">原罪（Original Sin）</div>
+        <div class="cm-desc">アダムとエバの「禁断の果実」を食べた罪が全人類に継承される、という概念。人間は生まれながらに「罪人」という世界観。</div>
+      </div>
+    </div>
+    <div class="cm-row">
+      <div class="cm-cell">
+        <div class="cm-label">救済（Salvation）</div>
+        <div class="cm-desc">イエスの十字架の死が人類の罪の「代価」となった。この救いを信じることで「救われる」。キリスト教の中心メッセージ。</div>
+      </div>
+      <div class="cm-cell">
+        <div class="cm-label">終末論（Eschatology）</div>
+        <div class="cm-desc">歴史には「終わり」があり、最後の審判で善人は天国・悪人は地獄へ。この直線的時間観が西洋の「進歩史観」の基礎になった。</div>
+      </div>
+      <div class="cm-cell">
+        <div class="cm-label">愛（Agape）</div>
+        <div class="cm-desc">見返りを求めない「神の愛」。敵をも愛せよ、隣人を自分のように愛せよ——この命令が現代の人権・博愛思想に繋がる。</div>
+      </div>
+    </div>
+    <div class="cm-row">
+      <div class="cm-cell wide">
+        <div class="cm-label">恵みと業（Grace vs Works）</div>
+        <div class="cm-desc">「信仰による恵みで救われる（プロテスタント）」 vs 「信仰＋善い行いの両方必要（カトリック）」——この神学論争が宗教改革を引き起こした。</div>
+      </div>
+      <div class="cm-cell">
+        <div class="cm-label">聖書の権威</div>
+        <div class="cm-desc">聖書を「神の言葉」としてどう解釈するか。文字通りか（原理主義）、比喩・歴史として読むか（リベラル神学）で宗派が分かれる。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 05: NEWS CONNECTION ===== -->
+
+<section>
+  <div class="sec-tag">05 — NEWS CONNECTION</div>
+  <h2>今日のニュースと<br>どう繋がる？</h2>
+  <p>キリスト教の知識があると、突然ニュースの「奥行き」が見えてくる。4つの現代ホットトピックを解説。</p>
+
+  <div class="news-grid">
+    <div class="news-card card-coral">
+      <span class="news-icon">🇺🇸</span>
+      <h3>米国の宗教右派（Evangelical）と政治</h3>
+      <p>米国のEvangelical（福音派）は約6,500万人。共和党の強固な支持基盤で、中絶禁止・性教育反対・イスラエル支持（終末論的理由で）を推進。トランプ支持の根底にある宗教的背景。</p>
+      <span class="news-link">→ 米大統領選を読む鍵</span>
+    </div>
+    <div class="news-card card-blue">
+      <span class="news-icon">🇺🇦</span>
+      <h3>ウクライナ戦争と正教会分裂</h3>
+      <p>モスクワ総主教キリル1世がプーチンの戦争を「聖戦」として支持。一方ウクライナ正教会は2019年にロシア正教会から独立。宗教的アイデンティティが戦争の意味付けに直結している。</p>
+      <span class="news-link">→ 戦争の宗教的文脈</span>
+    </div>
+    <div class="news-card card-green">
+      <span class="news-icon">🌍</span>
+      <h3>アフリカ・南米のキリスト教爆発的成長</h3>
+      <p>欧米が世俗化する中、サハラ以南アフリカでは信者が急増（2050年には世界のキリスト教徒の38%がアフリカに）。南半球発の保守的キリスト教が世界宗教の重心を変えつつある。</p>
+      <span class="news-link">→ 宗教の地政学的シフト</span>
+    </div>
+    <div class="news-card card-yellow">
+      <span class="news-icon">🇻🇦</span>
+      <h3>教皇フランシスコの改革 vs 保守派</h3>
+      <p>南米出身初の教皇・フランシスコは気候変動・移民・LGBTQ+への寛容で改革路線。一方で伝統的教義を守る保守派カトリックから強い反発。カトリック教会の内部分裂は深刻化している。</p>
+      <span class="news-link">→ カトリックの現在地</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SECTION 06: CRITICAL ===== -->
+
+<section>
+  <div class="sec-tag">06 — CRITICAL VIEW</div>
+  <h2>批判的に見る👀<br>忘れちゃいけない側面</h2>
+  <p>キリスト教の歴史は「光」だけではない。現代の文脈で批判的に向き合うべき問題を整理する。</p>
+
+  <div class="crit-box">
+    <div class="crit-box-label">⚠️ 批判的視点 CRITICAL NOTES</div>
+    <div class="crit-item">
+      <span class="crit-emoji">🗺️</span>
+      <p><strong>植民地主義との共犯関係：</strong>「布教」の名のもとにアフリカ・アジア・南米の植民地支配が正当化された。「文明化の使命」という論理がいかに先住民族の文化破壊と結びついたか——これはキリスト教の歴史から切り離せない。</p>
+    </div>
+    <div class="crit-item">
+      <span class="crit-emoji">💔</span>
+      <p><strong>聖職者による性的虐待問題：</strong>世界中のカトリック教会で数万件規模の聖職者による性的虐待が明らかになった。組織的隠蔽の構造が国際的に問題視されており、2020年代も訴訟・調査が続く。</p>
+    </div>
+    <div class="crit-item">
+      <span class="crit-emoji">⚔️</span>
+      <p><strong>宗教的暴力の正当化：</strong>十字軍、魔女狩り、宗教裁判、異端審問——「神の名のもと」に行われた暴力の歴史は膨大だ。現代でもロシア正教会による戦争正当化など、宗教と暴力の結びつきは消えていない。</p>
+    </div>
+    <div class="crit-item">
+      <span class="crit-emoji">🏳️‍🌈</span>
+      <p><strong>LGBTQ+差別の宗教的根拠化：</strong>「聖書が同性愛を禁じている」という解釈が差別立法の根拠とされてきた（現在も一部国家で）。宗教的権威による人権侵害という問題は現在進行形だ。</p>
+    </div>
+    <div class="crit-item">
+      <span class="crit-emoji">🔬</span>
+      <p><strong>科学との緊張：</strong>天動説問題（ガリレオ）、進化論否定（創造論）、幹細胞研究規制——宗教的権威が科学的知見と衝突してきた歴史がある。ただしリベラル神学は科学との対話を積極的に行っており、「宗教 vs 科学」の単純図式は誤解でもある。</p>
+    </div>
+  </div>
+
+  <div class="pq">
+    <p>📌 批判は「キリスト教はダメ」という結論のためではない。宗教を道具として使う「権力」への批判眼を持つことが、現代ニュースを読む本当の視座になる。</p>
+  </div>
+</section>
+
+<!-- ===== BACK COVER ===== -->
+
+<div class="back-cover">
+  <div class="back-deco">✝</div>
+
+  <div class="sec-tag" style="background:rgba(255,255,255,0.15)">SERIES LINE-UP</div>
+  <h2>📚 シリーズ全6冊のラインナップ</h2>
+  <p>毎号ひとつの宗教・哲学を解剖。読み進めるほど現代ニュースが立体的に見えてくる。</p>
+
+  <div class="next-series">
+    <div class="ns-card active">
+      <span class="ns-num">ISSUE 01</span>
+      <span class="ns-emoji">✝️</span>
+      <span class="ns-name">キリスト教</span>
+    </div>
+    <div class="ns-card">
+      <span class="ns-num">ISSUE 02</span>
+      <span class="ns-emoji">☪️</span>
+      <span class="ns-name">イスラム教</span>
+    </div>
+    <div class="ns-card">
+      <span class="ns-num">ISSUE 03</span>
+      <span class="ns-emoji">☸️</span>
+      <span class="ns-name">仏教</span>
+    </div>
+    <div class="ns-card">
+      <span class="ns-num">ISSUE 04</span>
+      <span class="ns-emoji">✡️</span>
+      <span class="ns-name">ユダヤ教</span>
+    </div>
+    <div class="ns-card">
+      <span class="ns-num">ISSUE 05</span>
+      <span class="ns-emoji">💡</span>
+      <span class="ns-name">近代哲学</span>
+    </div>
+  </div>
+
+  <div class="back-final">
+    <div class="tagline">
+      KNOW THE ROOTS,<br>
+      <span>READ THE WORLD.</span>
+    </div>
+    <div class="colophon">
+      WORLD RELIGIONS & PHILOSOPHY ZINE<br>
+      Issue 01 — Christianity / キリスト教<br>
+      思想・歴史・批判の視点でまとめた学習ZINE<br>
+      Designed for curious minds 🌍
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
